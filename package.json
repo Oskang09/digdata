@@ -1,0 +1,16 @@
+{
+  "name": "digdata",
+  "version": "1.0.0",
+  "description": "Some utility for digging data from a complex object or array.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "jest --coverage"
+  },
+  "author": "Oskang09",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
