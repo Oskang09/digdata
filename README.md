@@ -42,6 +42,7 @@ Time:        0.851s, estimated 1s
 # Changelog
 
 - 1.0.0 Initialize Repository
+- 1.0.1 Update README
 
 # Maintainers & Contributors
 
