@@ -46,8 +46,8 @@ test('Should equal notation return null when target not exists.', () => {
     expect(res).toBe(null);
 });
 
-test('Should filter notation return specific key', () => {
-    const res = dig(object, 'users.*.name');
+test('Should dot notation meet array return specific key', () => {
+    const res = dig(object, 'users.name');
     expect(res).toStrictEqual([ 'Oskang09', 'Roger' ]);
 });
 

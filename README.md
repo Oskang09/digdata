@@ -11,6 +11,36 @@ $ npm i --save digdata
 
 # Example
 
+```javascript
+const { dig } = require('digdata');
+const object = {
+    owner: {
+        id: 14,
+        name: 'Jason',
+        age: 19
+    },
+    users: [
+        {
+            id: 1,
+            name: 'Oskang09',
+            age: 20,
+            email: 'developer.oskang@gmail.com',
+        },
+        {
+            id: 2,
+            name: 'Roger',
+            age: 24,
+        }
+    ]
+};
+
+dig(object, 'owner.name'); // 'Jason'
+dig(object, [ 'owner', 'name' ]); // 'Jason'
+dig(object, 'owner', 'name'); // 'Jason'
+dig(object, 'users.id=2'); // { "id": 2, "name": "Roger", "age": 24 }
+dig(object, 'users.name'); // [ 'Roger', 'Oskang09' ]
+```
+
 You can view example at `index.test.js`.
 
 
@@ -43,6 +73,7 @@ Time:        0.851s, estimated 1s
 
 - 1.0.0 Initialize Repository
 - 1.0.1 Update README
+- 1.0.2 Update ArrayDotNotation
 
 # Maintainers & Contributors
 

@@ -24,8 +24,8 @@ const dig = function (object) {
             if (!target) {
                 return null;
             }
-        } else if (notation === '*' && Array.isArray(target)) {
-            return target.map((t) => dig(t, args.slice(index + 1)));
+        } else if (Array.isArray(target)) {
+            return target.map((t) => dig(t, args.slice(index)));
         } else {
             if (!target[notation]) {
                 return null;
