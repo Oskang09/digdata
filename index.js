@@ -1,39 +1,72 @@
-const dig = function (object) {
+let opts = {
+    seperator: '.',
+    comma: ',',
+    equal: '=',
+    arrayMap: '*',
+};
+
+const dig = function (object, structure, options = opts) {
     if (!object) {
         return null;
     }
 
-    let args = Array.prototype.slice.call(arguments, 1);
-    if (typeof args[0] === 'string' && args[0].indexOf('.') !== -1) {
-        args = args[0].split('.');
-    }
+    if (typeof structure === 'object') {
 
-    if (Array.isArray(args[0])) {
-        args = args[0];
+        if (Array.isArray(structure)) {
+            return structure.map(
+                (struct) => dig(object, struct)
+            );
+        }
+
+        const keys = Object.keys(structure);
+        const result = {};
+        for (const key of keys) {
+            result[key] = dig(object, structure[key]);
+        }
+        return result;
     }
 
     let target = object;
+    let args = structure.split(options.seperator);
     for (let index = 0; index < args.length; index += 1) {
         const notation = args[index];
 
-        if (notation.indexOf('=') !== -1) {
-            const comparison = notation.split('=');
+        if (notation.indexOf(options.comma) !== -1) {
+            const keys = notation.split(options.comma);
+            const result = {};
+            for (const key of keys) {
+                result[key] = dig(object, key);
+            }
+            target = result;
+        }
+        else if (notation.indexOf(options.equal) !== -1) {
+            const comparison = notation.split(options.equal);
             const key = comparison[0];
             const value = comparison[1];
-            target = target.find((t) => t[key] == value);
-            if (!target) {
-                return null;
-            }
-        } else if (Array.isArray(target)) {
-            return target.map((t) => dig(t, args.slice(index)));
-        } else {
-            if (!target[notation]) {
-                return null;
-            }
+            target = target.find(
+                (t) => key ? t[key] == value : t == value
+            );
+        }
+        else if (notation === options.arrayMap) {
+            index += 1;
+            target = target.map(
+                (t) => dig(t, args.slice(index)[0])
+            );
+        }
+        else {
             target = target[notation];
+        }
+
+        if (!target) {
+            return null;
         }
     }
     return target;
 };
 
-module.exports = { dig };
+module.exports = {
+    dig,
+    setOptions: function (newOpts) {
+        Object.assign(opts, newOpts);
+    },
+};
