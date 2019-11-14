@@ -203,6 +203,7 @@ Time:        0.964s, estimated 1s
 - 1.0.2 Update ArrayDotNotation
 - 1.0.3 Update Object Array Result and Some New Symbol
 - 1.0.4 Update SUM query, BiggerThan and SmallerThan Symbols
+- 1.0.5 Fix for accepting falsy value ( false, 0 ) only check for undefined & null
 
 # Maintainers & Contributors
 

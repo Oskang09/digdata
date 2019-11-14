@@ -94,7 +94,7 @@ const dig = function (object, structure, options = opts) {
             target = target[notation];
         }
 
-        if (!target) {
+        if (target == null || target == undefined) {
             return null;
         }
     }
