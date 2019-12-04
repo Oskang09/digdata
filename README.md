@@ -195,6 +195,7 @@ Time:        1.03s
 - 1.0.4 Update SUM query, BiggerThan and SmallerThan Symbols
 - 1.0.5 Fix for accepting falsy value ( false, 0 ) only check for undefined & null
 - 1.0.6 Revert back to 1.0.3 with 1.0.5 Fix ( Keep it simple )
+- 1.0.7
 
 # Maintainers & Contributors
 
