@@ -162,24 +162,14 @@ dig(object, 'update->options'): // 'OK'
 ![](https://github.com/Oskang09/digdata/workflows/NodeCI/badge.svg)
 ```
  PASS  ./index.test.js
-  ✓ Should dot string notation accepted. (3ms)
+  ✓ Should dot string notation accepted. (4ms)
   ✓ Should object dot string notation accepted. (1ms)
-  ✓ Should array dot string notation accepted. (1ms)
-  ✓ Should equal symbol return object if target is array object based on condition.
-  ✓ Should equal symbol return first value if target is array based on condition.
-  ✓ Should equal symbol return null when target not exists. (1ms)
-  ✓ Should biggerThan symbol return object if target is array object based on condition.
-  ✓ Should biggerThan symbol return first value if target is array based on condition.
-  ✓ Should biggerThan symbol return value when target found if target is object. (1ms)
-  ✓ Should biggerThan symbol return null when target not exists.
-  ✓ Should smallerThan symbol return object if target is array object based on condition.
-  ✓ Should smallerThan symbol return first value if target is array based on condition.
-  ✓ Should smallerThan symbol return null when target not exists. (1ms)
-  ✓ Should smallerThan symbol return value when target found if target is object.
-  ✓ Should arrayMap symbol return specific key
-  ✓ Should comma symbol work with arrayMap symbol return multiple keys (1ms)
-  ✓ Should SUM() query return sum of all specified key (INTEGER)
-  ✓ Should SUM() query return sum of all specified key (FLOAT)
+  ✓ Should array dot string notation accepted.
+  ✓ Should equal symbol return object if target is array object based on condition. (1ms)
+  ✓ Should equal symbol return array if target is array based on condition.
+  ✓ Should equal symbol return null when target not exists.
+  ✓ Should arrayMap symbol return specific key (1ms)
+  ✓ Should comma symbol work with arrayMap symbol return multiple keys
   ✓ Should return null if target exists.
   ✓ Should return null if object is falsy value. (1ms)
   ✓ Should `setOptions` update options object.
@@ -187,13 +177,13 @@ dig(object, 'update->options'): // 'OK'
 ----------|----------|----------|----------|----------|-------------------|
 File      |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
 ----------|----------|----------|----------|----------|-------------------|
-All files |      100 |    97.37 |      100 |      100 |                   |
- index.js |      100 |    97.37 |      100 |      100 |                45 |
+All files |      100 |      100 |      100 |      100 |                   |
+ index.js |      100 |      100 |      100 |      100 |                   |
 ----------|----------|----------|----------|----------|-------------------|
 Test Suites: 1 passed, 1 total
-Tests:       21 passed, 21 total
+Tests:       11 passed, 11 total
 Snapshots:   0 total
-Time:        0.964s, estimated 1s
+Time:        1.03s
 ```
 
 # Changelog
@@ -204,6 +194,7 @@ Time:        0.964s, estimated 1s
 - 1.0.3 Update Object Array Result and Some New Symbol
 - 1.0.4 Update SUM query, BiggerThan and SmallerThan Symbols
 - 1.0.5 Fix for accepting falsy value ( false, 0 ) only check for undefined & null
+- 1.0.6 Revert back to 1.0.3 with 1.0.5 Fix ( Keep it simple )
 
 # Maintainers & Contributors
 
