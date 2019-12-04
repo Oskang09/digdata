@@ -144,6 +144,8 @@ setOptions({
     // comma: ',',
     // equal: '=',
     // arrayMap: '*',
+    // biggerThan: '>',
+    // smallerThan: '<',
 });
 
 const object = {
