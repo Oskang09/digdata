@@ -23,23 +23,7 @@ const object = {
         'Oskang09',
         'Roger',
         'Jason'
-    ],
-    numbers: [
-        20,
-        30,
-        50
-    ],
-    products: [
-        {
-            name: 'Burger',
-            price: 8.9,
-        },
-        {
-            name: 'French Fries',
-            price: 3.5
-        }
     ]
-
 };
 
 test('Should dot string notation accepted.', () => {
@@ -62,7 +46,7 @@ test('Should equal symbol return object if target is array object based on condi
     expect(res).toBe(object.users[0]);
 });
 
-test('Should equal symbol return first value if target is array based on condition.', () => {
+test('Should equal symbol return array if target is array based on condition.', () => {
     const res = dig(object, 'community.=Jason');
     expect(res).toBe('Jason');
 });
@@ -70,46 +54,6 @@ test('Should equal symbol return first value if target is array based on conditi
 test('Should equal symbol return null when target not exists.', () => {
     const res = dig(object, 'users.id=3');
     expect(res).toBe(null);
-});
-
-test('Should biggerThan symbol return object if target is array object based on condition.', () => {
-    const res = dig(object, 'users.age>20');
-    expect(res).toBe(object.users[1]);
-});
-
-test('Should biggerThan symbol return first value if target is array based on condition.', () => {
-    const res = dig(object, 'numbers.>20');
-    expect(res).toBe(30);
-});
-
-test('Should biggerThan symbol return value when target found if target is object.', () => {
-    const res = dig(object, 'owner.age>10');
-    expect(res).toBe(19);
-});
-
-test('Should biggerThan symbol return null when target not exists.', () => {
-    const res = dig(object, 'owner.age>20');
-    expect(res).toBe(0);
-});
-
-test('Should smallerThan symbol return object if target is array object based on condition.', () => {
-    const res = dig(object, 'users.age<22');
-    expect(res).toBe(object.users[0]);
-});
-
-test('Should smallerThan symbol return first value if target is array based on condition.', () => {
-    const res = dig(object, 'numbers.<30');
-    expect(res).toBe(20);
-});
-
-test('Should smallerThan symbol return null when target not exists.', () => {
-    const res = dig(object, 'owner.age<5');
-    expect(res).toBe(0);
-});
-
-test('Should smallerThan symbol return value when target found if target is object.', () => {
-    const res = dig(object, 'owner.age<20');
-    expect(res).toBe(19);
 });
 
 test('Should arrayMap symbol return specific key', () => {
@@ -123,16 +67,6 @@ test('Should comma symbol work with arrayMap symbol return multiple keys', () =>
         { name: 'Oskang09', id: 1 },
         { name: 'Roger', id: 2 }
     ]);
-});
-
-test('Should SUM() query return sum of all specified key (INTEGER)', () => {
-    const res = dig(object, 'users.SUM(age)');
-    expect(res).toStrictEqual(44);
-});
-
-test('Should SUM() query return sum of all specified key (FLOAT)', () => {
-    const res = dig(object, 'products.SUM(price)');
-    expect(res).toStrictEqual(12.4);
 });
 
 test('Should return null if target exists.', () => {

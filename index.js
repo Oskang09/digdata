@@ -3,11 +3,7 @@ let opts = {
     comma: ',',
     equal: '=',
     arrayMap: '*',
-    biggerThan: '>',
-    smallerThan: '<',
 };
-
-const queryRegex = /(\w+)\(([^)]+)\)/;
 
 const dig = function (object, structure, options = opts) {
     if (!object) {
@@ -35,42 +31,7 @@ const dig = function (object, structure, options = opts) {
     for (let index = 0; index < args.length; index += 1) {
         const notation = args[index];
 
-        if (result = queryRegex.exec(notation)) {
-            const query = result[1];
-            const field = result[2];
-            switch (query) {
-                case "SUM":
-                    target = target.reduce(
-                        (previous, current) => (
-                            typeof previous === 'number' 
-                            ? previous
-                            : dig(previous, field)
-                        ) + dig(current, field)
-                    );
-                    break;
-            }
-        }
-        else if (notation.indexOf(options.biggerThan) !== -1) {
-            const comparison = notation.split(options.biggerThan);
-            const key = comparison[0];
-            const value = parseInt(comparison[1]);
-            if (Array.isArray(target)) {
-                target = target.find((t) => key ? t[key] > value : t > value);
-            } else {
-                return target[key] > value ? target[key] : 0;
-            }
-        }
-        else if (notation.indexOf(options.smallerThan) !== -1) {
-            const comparison = notation.split(options.smallerThan);
-            const key = comparison[0];
-            const value = parseInt(comparison[1]);
-            if (Array.isArray(target)) {
-                target = target.find((t) => key ? t[key] < value : t < value);
-            } else {
-                return target[key] < value ? target[key] : 0;
-            }
-        }
-        else if (notation.indexOf(options.comma) !== -1) {
+        if (notation.indexOf(options.comma) !== -1) {
             const keys = notation.split(options.comma);
             const result = {};
             for (const key of keys) {
@@ -82,7 +43,9 @@ const dig = function (object, structure, options = opts) {
             const comparison = notation.split(options.equal);
             const key = comparison[0];
             const value = comparison[1];
-            target = target.find((t) => key ? t[key] == value : t == value);
+            target = target.find(
+                (t) => key ? t[key] == value : t == value
+            );
         }
         else if (notation === options.arrayMap) {
             index += 1;
