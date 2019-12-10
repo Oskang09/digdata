@@ -9,7 +9,10 @@
     "test": "jest --coverage"
   },
   "homepage": "https://github.com/Oskang09/digdata#readme",
-  "repository": "git://github.com/Oskang09/digdata",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Oskang09/digdata"
+  },
   "author": "Oskang09",
   "license": "ISC",
   "devDependencies": {

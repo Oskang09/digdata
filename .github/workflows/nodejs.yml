@@ -2,11 +2,10 @@ name: NodeCI
 on: [push]
 
 jobs:
-  build:
+  publish-gpr:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-
       - uses: actions/setup-node@master
         with:
           node-version: 6
@@ -16,10 +15,14 @@ jobs:
           npm install
           npm test
           npm config set //registry.npmjs.org/:_authToken=${{secrets.GPR_TOKEN}}
-          npm publish
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
+  publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
       - uses: actions/setup-node@master
         with:
           node-version: 6
@@ -30,8 +33,16 @@ jobs:
           npm install
           npm test
           npm config set //registry.npmjs.org/:_authToken=${{secrets.GPR_TOKEN}}
-          npm config set scope "@oskang09"
-          npm config list
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@master
+      - name: Build
+        run: |
+          npm install
+          npm test
