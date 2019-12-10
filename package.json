@@ -1,6 +1,6 @@
 {
   "name": "@oskang09/digdata",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Some utility for digging data from a complex object or array.",
   "main": "index.js",
   "scripts": {

@@ -198,6 +198,9 @@ Time:        1.03s
 - 1.0.7 Testing Github Packages
 - 1.0.8 Testing Github Packages
 - 1.0.9 Testing Github Packages
+- 1.0.10 Testing Github Packages
+- 1.0.11 Testing Github Packages
+- 1.0.12 Finally we did it.
 
 # Maintainers & Contributors
 
