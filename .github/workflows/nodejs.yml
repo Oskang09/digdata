@@ -15,12 +15,9 @@ jobs:
         run: |
           npm install
           npm test
-          npm config set //registry.npmjs.org/:_authToken=e12a4178-aaa7-43be-87f2-6a3e5c7aa257
-          npm config set scope "@oskang09"
-          npm config list
           npm publish --access public
         env:
-          NODE_AUTH_TOKEN: e12a4178-aaa7-43be-87f2-6a3e5c7aa257
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - uses: actions/setup-node@master
         with:
@@ -31,9 +28,9 @@ jobs:
         run: |
           npm install
           npm test
-          npm config set //registry.npmjs.org/:_authToken=3a24aab4ecd5e691a57f0691bb524ea16b960727
+          npm config set //registry.npmjs.org/:_authToken=${{secrets.GPR_TOKEN}}
           npm config set scope "@oskang09"
           npm config list
           npm publish
         env:
-          NODE_AUTH_TOKEN: 3a24aab4ecd5e691a57f0691bb524ea16b960727
+          NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
