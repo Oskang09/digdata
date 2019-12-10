@@ -6,13 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@master
+      - uses: actions/setup-node@v1
         with:
           node-version: 6
           registry-url: "https://registry.npmjs.org/"
       - name: Publish to NPM
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_TOKEN}}" > ~/.npmrc
+          npm install
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
@@ -21,14 +21,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@master
+      - uses: actions/setup-node@v1
         with:
           node-version: 6
           registry-url: https://npm.pkg.github.com/
           scope: "@oskang09"
       - name: Publish to GPR
         run: |
-          echo "//npm.pkg.github.org/:_authToken=${{secrets.GPR_TOKEN}}" > ~/.npmrc
+          npm install
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
