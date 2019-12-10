@@ -23,7 +23,6 @@ jobs:
       - name: Publish to NPM
         run: |
           npm install
-          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
           npm publish npm-pkg
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
