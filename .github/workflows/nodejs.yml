@@ -7,11 +7,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
+       - uses: actions/setup-node@master
+          with:
+            node-version: 6
+            registry-url: "https://registry.npmjs.org/"
       - name: Publish to NPMJS
-        uses: actions/setup-node@master
-        with:
-          node-version: 6
-          registry-url: "https://registry.npmjs.org/"
         run: |
           npm install
           npm test
@@ -22,12 +22,12 @@ jobs:
         env:
           NODE_AUTH_TOKEN: e12a4178-aaa7-43be-87f2-6a3e5c7aa257
 
-      - name: Publish to GPR
-        uses: actions/setup-node@master
+      - uses: actions/setup-node@master
         with:
           node-version: 6
           registry-url: https://npm.pkg.github.com/
           scope: "@oskang09"
+      - name: Publish to GPR
         run: |
           npm install
           npm test
