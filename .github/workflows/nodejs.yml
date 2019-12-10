@@ -2,6 +2,16 @@ name: NodeCI
 on: [push]
 
 jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - name: Build
+        run: |
+          npm install
+          npm test
+
   publish-npm:
     runs-on: ubuntu-latest
     steps:
@@ -32,13 +42,3 @@ jobs:
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@master
-      - name: Build
-        run: |
-          npm install
-          npm test
