@@ -175,11 +175,11 @@ dig(object, 'update->options'): // 'OK'
   ✓ Should `setOptions` update options object.
 
 ----------|----------|----------|----------|----------|-------------------|
-File      |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
-----------|----------|----------|----------|----------|-------------------|
-All files |      100 |      100 |      100 |      100 |                   |
- index.js |      100 |      100 |      100 |      100 |                   |
-----------|----------|----------|----------|----------|-------------------|
+| File       | % Stmts    | % Branch   | % Funcs    | % Lines    | Uncovered Line #s   |
+| ---------- | ---------- | ---------- | ---------- | ---------- | ------------------- |
+| All files  | 100        | 100        | 100        | 100        |                     |
+| index.js   | 100        | 100        | 100        | 100        |                     |
+| ---------- | ---------- | ---------- | ---------- | ---------- | ------------------- |
 Test Suites: 1 passed, 1 total
 Tests:       11 passed, 11 total
 Snapshots:   0 total
@@ -195,7 +195,9 @@ Time:        1.03s
 - 1.0.4 Update SUM query, BiggerThan and SmallerThan Symbols
 - 1.0.5 Fix for accepting falsy value ( false, 0 ) only check for undefined & null
 - 1.0.6 Revert back to 1.0.3 with 1.0.5 Fix ( Keep it simple )
-- 1.0.7
+- 1.0.7 Testing Github Packages
+- 1.0.8 Testing Github Packages
+- 1.0.9 Testing Github Packages
 
 # Maintainers & Contributors
 
