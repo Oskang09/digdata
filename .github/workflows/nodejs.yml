@@ -4,17 +4,36 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [6]
-
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+
+      - name: Publish to NPMJS
+        uses: actions/setup-node@master
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Installation and running tests
+          node-version: 6
+          registry-url: "https://registry.npmjs.org/"
         run: |
           npm install
           npm test
+          npm config set //registry.npmjs.org/:_authToken=e12a4178-aaa7-43be-87f2-6a3e5c7aa257
+          npm config set scope "@oskang09"
+          npm config list
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: e12a4178-aaa7-43be-87f2-6a3e5c7aa257
+
+      - name: Publish to GPR
+        uses: actions/setup-node@master
+        with:
+          node-version: 6
+          registry-url: https://npm.pkg.github.com/
+          scope: "@oskang09"
+        run: |
+          npm install
+          npm test
+          npm config set //registry.npmjs.org/:_authToken=3a24aab4ecd5e691a57f0691bb524ea16b960727
+          npm config set scope "@oskang09"
+          npm config list
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: 3a24aab4ecd5e691a57f0691bb524ea16b960727
