@@ -12,8 +12,8 @@ jobs:
           registry-url: "https://registry.npmjs.org/"
       - name: Publish to NPM
         run: |
-          npm whoami
-          npm publish --access=public
+          echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_TOKEN}}" > ~/.npmrc
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
@@ -25,8 +25,10 @@ jobs:
         with:
           node-version: 6
           registry-url: https://npm.pkg.github.com/
+          scope: "@oskang09"
       - name: Publish to GPR
         run: |
+          echo "//npm.pkg.github.org/:_authToken=${{secrets.GPR_TOKEN}}" > ~/.npmrc
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
