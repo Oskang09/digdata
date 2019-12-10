@@ -39,6 +39,6 @@ jobs:
       - name: Publish to GPR
         run: |
           npm install
-          npm publish
+          npm publish --@oskang09:registry=https://registry.npmjs.org/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
