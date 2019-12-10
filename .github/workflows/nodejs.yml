@@ -24,6 +24,7 @@ jobs:
         run: |
           npm install
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          printenv
           npm publish npm-pkg
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
