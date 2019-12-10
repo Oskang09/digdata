@@ -20,11 +20,10 @@ jobs:
         with:
           node-version: 6
           registry-url: "https://registry.npmjs.org/"
-          scope: oskang09
       - name: Publish to NPM
         run: |
           npm install
-          npm publish --@oskang09:registry=https://registry.npmjs.org/
+          npm publish npm-pkg
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -36,7 +35,7 @@ jobs:
         with:
           node-version: 6
           registry-url: https://npm.pkg.github.com/
-          scope: oskang09
+          scope: @oskang09
       - name: Publish to GPR
         run: |
           npm install
