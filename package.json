@@ -1,6 +1,6 @@
 {
-  "name": "digdata",
-  "version": "1.0.7",
+  "name": "@oskang09/digdata",
+  "version": "1.0.9",
   "description": "Some utility for digging data from a complex object or array.",
   "main": "index.js",
   "scripts": {
@@ -9,8 +9,12 @@
     "test": "jest --coverage"
   },
   "homepage": "https://github.com/Oskang09/digdata#readme",
+  "repository": "git://github.com/Oskang09/digdata",
   "author": "Oskang09",
   "license": "ISC",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "devDependencies": {
     "jest": "^24.9.0"
   }
