@@ -20,6 +20,7 @@ jobs:
         with:
           node-version: 6
           registry-url: "https://registry.npmjs.org/"
+          scope: "@oskang09"
       - name: Publish to NPM
         run: |
           npm install
