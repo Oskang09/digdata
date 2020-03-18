@@ -201,6 +201,8 @@ Time:        1.03s
 - 1.0.10 Testing Github Packages
 - 1.0.11 Testing Github Packages
 - 1.0.12 Finally we did it.
+- 1.0.13 Only publish to npm
+- 1.0.14 Fix security alerts
 
 # Maintainers & Contributors
 
