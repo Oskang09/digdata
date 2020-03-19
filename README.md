@@ -71,7 +71,7 @@ const object = {
 };
 
 dig(object, 'variants.name=Ala Carte'); // { "name": "Ala Carte", "price": 8.9, "items": [ "Burger" ] }
-dig(object, 'dine.=DINE_IN'); // "DINE_IN"
+dig(object, 'dine=DINE_IN'); // "DINE_IN"
 ```
 
 ### ArrayMap Symbol

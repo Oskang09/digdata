@@ -6,6 +6,10 @@ const object = {
         name: 'Jason',
         age: 19
     },
+    client: {
+        name: 'Yuzy',
+        job: "Student",
+    },
     users: [
         {
             id: 1,
@@ -17,6 +21,7 @@ const object = {
             id: 2,
             name: 'Roger',
             age: 24,
+            special: true,
         }
     ],
     community: [
@@ -37,8 +42,8 @@ test('Should object dot string notation accepted.', () => {
 });
 
 test('Should array dot string notation accepted.', () => {
-    const res = dig(object, [ 'owner.name', 'owner.id' ]);
-    expect(res).toStrictEqual([ 'Jason', 14 ]);
+    const res = dig(object, ['owner.name', 'owner.id']);
+    expect(res).toStrictEqual(['Jason', 14]);
 });
 
 test('Should equal symbol return object if target is array object based on condition.', () => {
@@ -58,7 +63,7 @@ test('Should equal symbol return null when target not exists.', () => {
 
 test('Should arrayMap symbol return specific key', () => {
     const res = dig(object, 'users.*.name');
-    expect(res).toStrictEqual([ 'Oskang09', 'Roger' ]);
+    expect(res).toStrictEqual(['Oskang09', 'Roger']);
 });
 
 test('Should comma symbol work with arrayMap symbol return multiple keys', () => {
@@ -67,6 +72,11 @@ test('Should comma symbol work with arrayMap symbol return multiple keys', () =>
         { name: 'Oskang09', id: 1 },
         { name: 'Roger', id: 2 }
     ]);
+});
+
+test('Should pipe symbol return first truth value', () => {
+    const res = dig(object, 'client.address|name|job');
+    expect(res).toBe("Yuzy")
 });
 
 test('Should return null if target exists.', () => {

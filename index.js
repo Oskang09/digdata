@@ -3,6 +3,7 @@ let opts = {
     comma: ',',
     equal: '=',
     arrayMap: '*',
+    pipe: '|',
 };
 
 const dig = function (object, structure, options = opts) {
@@ -31,11 +32,21 @@ const dig = function (object, structure, options = opts) {
     for (let index = 0; index < args.length; index += 1) {
         const notation = args[index];
 
-        if (notation.indexOf(options.comma) !== -1) {
+        if (notation.indexOf(options.pipe) !== -1) {
+            const keys = notation.split(options.pipe);
+            let result = null;
+            for (const key of keys) {
+                result = dig(target, key);
+                if (result) {
+                    break;
+                }
+            }
+            target = result;
+        } else if (notation.indexOf(options.comma) !== -1) {
             const keys = notation.split(options.comma);
             const result = {};
             for (const key of keys) {
-                result[key] = dig(object, key);
+                result[key] = dig(target, key);
             }
             target = result;
         }
