@@ -132,6 +132,21 @@ dig(object, { classType: 'class', studentNames: 'students.*.name' }); // { "clas
 dig(object, [ "class", "students.id=3.name" ]); // [ 'LECTURE', 'Yuzy' ]
 ```
 
+### Pipe Symbol
+
+Pipe symbol `|` is for taking first truth value form object. etc
+
+```javascript
+const { dig } = require('digdata'); 
+const object = {
+    name: 'Oska',
+    job: 'Developer',
+};
+
+dig(object, 'address|name|job'); // Oska
+dig(object, 'address|job|name'); // Developer  
+```
+
 ### Custom symbols
 
 You can override it by using `setOptions(newOpts)` method.
@@ -144,8 +159,7 @@ setOptions({
     // comma: ',',
     // equal: '=',
     // arrayMap: '*',
-    // biggerThan: '>',
-    // smallerThan: '<',
+    // pipe: '|',
 });
 
 const object = {
@@ -162,28 +176,30 @@ dig(object, 'update->options'): // 'OK'
 ![](https://github.com/Oskang09/digdata/workflows/NodeCI/badge.svg)
 ```
  PASS  ./index.test.js
-  ✓ Should dot string notation accepted. (4ms)
+  ✓ Should dot string notation accepted. (3ms)
   ✓ Should object dot string notation accepted. (1ms)
-  ✓ Should array dot string notation accepted.
-  ✓ Should equal symbol return object if target is array object based on condition. (1ms)
+  ✓ Should array dot string notation accepted. (1ms)
+  ✓ Should equal symbol return object if target is array object based on condition.
   ✓ Should equal symbol return array if target is array based on condition.
-  ✓ Should equal symbol return null when target not exists.
-  ✓ Should arrayMap symbol return specific key (1ms)
-  ✓ Should comma symbol work with arrayMap symbol return multiple keys
+  ✓ Should equal symbol return null when target not exists. (1ms)
+  ✓ Should arrayMap symbol return specific key
+  ✓ Should comma symbol work with arrayMap symbol return multiple keys (1ms)
+  ✓ Should pipe symbol return first truth value
   ✓ Should return null if target exists.
   ✓ Should return null if object is falsy value. (1ms)
   ✓ Should `setOptions` update options object.
 
-----------|----------|----------|----------|----------|-------------------|
-| File       | % Stmts    | % Branch   | % Funcs    | % Lines    | Uncovered Line #s   |
-| ---------- | ---------- | ---------- | ---------- | ---------- | ------------------- |
-| All files  | 100        | 100        | 100        | 100        |                     |
-| index.js   | 100        | 100        | 100        | 100        |                     |
-| ---------- | ---------- | ---------- | ---------- | ---------- | ------------------- |
+----------|---------|----------|---------|---------|-------------------
+| File       | % Stmts   | % Branch   | % Funcs   | % Lines   | Uncovered Line #s   |
+| ---------- | --------- | ---------- | --------- | --------- | ------------------- |
+| All files  | 100       | 100        | 100       | 100       |
+| index.js   | 100       | 100        | 100       | 100       |
+| ---------- | --------- | ---------- | --------- | --------- | ------------------- |
 Test Suites: 1 passed, 1 total
-Tests:       11 passed, 11 total
+Tests:       12 passed, 12 total
 Snapshots:   0 total
-Time:        1.03s
+Time:        1.296s
+Ran all test suites.
 ```
 
 # Changelog
@@ -203,6 +219,7 @@ Time:        1.03s
 - 1.0.12 Finally we did it.
 - 1.0.13 Only publish to npm
 - 1.0.14 Fix security alerts
+- 1.0.15 Feature Pipe Symbol
 
 # Maintainers & Contributors
 
