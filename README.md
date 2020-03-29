@@ -220,6 +220,7 @@ Ran all test suites.
 - 1.0.13 Only publish to npm
 - 1.0.14 Fix security alerts
 - 1.0.15 Feature Pipe Symbol
+- 1.0.16 Error when 'second parameteres' is undefined
 
 # Maintainers & Contributors
 
