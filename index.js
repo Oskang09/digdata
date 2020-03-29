@@ -7,7 +7,7 @@ let opts = {
 };
 
 const dig = function (object, structure, options = opts) {
-    if (!object) {
+    if (!object || !structure) {
         return null;
     }
 
