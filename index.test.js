@@ -1,4 +1,4 @@
-const { dig, setOptions } = require('./index');
+const { dig, setOptions, setFormatter } = require('./index');
 
 const object = {
     owner: {
@@ -85,6 +85,36 @@ test('Should return null if target exists.', () => {
 
 test('Should return null if object is falsy value.', () => {
     expect(dig(null, 'owner.name')).toBe(null);
+});
+
+test('Should run invoke if function and data found.', () => {
+    const log = jest.fn();
+    setFormatter({
+        logger: function (data) {
+            log(data);
+            return data;
+        }
+    });
+
+    dig(object, 'users.*.name&logger');
+    expect(log.mock.calls.length).toBe(2);
+    expect(log.mock.calls[0][0]).toBe("Oskang09");
+    expect(log.mock.calls[1][0]).toBe("Roger");
+});
+
+test('Should skip if function not found.', () => {
+    const log = jest.fn();
+    setFormatter({
+        logger: function (data) {
+            log(data);
+            return data;
+        }
+    });
+
+    dig(object, 'users.*.age&other,special&logger');
+    expect(log.mock.calls.length).toBe(2);
+    expect(log.mock.calls[0][0]).toBe(null);
+    expect(log.mock.calls[1][0]).toBe(true);
 });
 
 test('Should `setOptions` update options object.', () => {

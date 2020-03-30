@@ -1,6 +1,6 @@
 # digdata
 
-Some utility for digging data from a complex object or array.
+lightweight zero dependency object data utility
 
 # Installation
 
@@ -160,6 +160,33 @@ dig(object, 'address|name|job'); // Oska
 dig(object, 'address|job|name'); // Developer  
 ```
 
+### Invoke Symbol
+
+Invoke symbol `&` is for assigning formatter function for value. You can set formatter globally by using method `setFormatter(formatter)` before any `dig` have invoked.
+
+```javascript
+const { dig, setFormatter } = require('digdata');
+const formatter = {
+    moment: function (value, object) {
+        return Date.parse(value);
+    }
+};
+
+const object = {
+    createdAt: '12 Dec 2019 00:12:00 GMT',
+    updatedAt: '12 Mac 2020 00:12:00 GMT'
+};
+
+let newObject = dig(object, { createdAt: 'createdAt&moment', updatedAt: 'updatedAt&moment' }, undefined, formatter);
+console.log(typeof newObject.createdAt); // number
+console.log(typeof newObject.updatedAt); // number
+
+setFormatter(formatter);
+newObject = dig(object, { createdAt: 'createdAt&moment', updatedAt: 'updatedAt&moment' });
+console.log(typeof newObject.createdAt); // number
+console.log(typeof newObject.updatedAt); // number
+```
+
 ### Custom symbols
 
 You can override it by using `setOptions(newOpts)` method.
@@ -173,6 +200,7 @@ setOptions({
     // equal: '=',
     // arrayMap: '*',
     // pipe: '|',
+    // invoke: '&',
 });
 
 const object = {
@@ -198,43 +226,24 @@ dig(object, 'update->options'): // 'OK'
   ✓ Should arrayMap symbol return specific key
   ✓ Should comma symbol work with arrayMap symbol return multiple keys (1ms)
   ✓ Should pipe symbol return first truth value
-  ✓ Should return null if target exists.
+  ✓ Should return null if target exists. (1ms)
   ✓ Should return null if object is falsy value. (1ms)
-  ✓ Should `setOptions` update options object.
+  ✓ Should run invoke if function and data found. (1ms)
+  ✓ Should skip if function not found. (1ms)
+  ✓ Should `setOptions` update options object. (1ms)
 
 ----------|---------|----------|---------|---------|-------------------
 | File       | % Stmts   | % Branch   | % Funcs   | % Lines   | Uncovered Line #s   |
 | ---------- | --------- | ---------- | --------- | --------- | ------------------- |
-| All files  | 100       | 100        | 100       | 100       |
-| index.js   | 100       | 100        | 100       | 100       |
+| All files  | 100       | 94.12      | 100       | 100       |
+| index.js   | 100       | 94.12      | 100       | 100       | 99,103              |
 | ---------- | --------- | ---------- | --------- | --------- | ------------------- |
 Test Suites: 1 passed, 1 total
-Tests:       12 passed, 12 total
+Tests:       14 passed, 14 total
 Snapshots:   0 total
-Time:        1.296s
+Time:        1.552s
 Ran all test suites.
 ```
-
-# Changelog
-
-- 1.0.0 Initialize Repository
-- 1.0.1 Update README
-- 1.0.2 Update ArrayDotNotation
-- 1.0.3 Update Object Array Result and Some New Symbol
-- 1.0.4 Update SUM query, BiggerThan and SmallerThan Symbols
-- 1.0.5 Fix for accepting falsy value ( false, 0 ) only check for undefined & null
-- 1.0.6 Revert back to 1.0.3 with 1.0.5 Fix ( Keep it simple )
-- 1.0.7 Testing Github Packages
-- 1.0.8 Testing Github Packages
-- 1.0.9 Testing Github Packages
-- 1.0.10 Testing Github Packages
-- 1.0.11 Testing Github Packages
-- 1.0.12 Finally we did it.
-- 1.0.13 Only publish to npm
-- 1.0.14 Fix security alerts
-- 1.0.15 Feature Pipe Symbol
-- 1.0.16 Error when 'second parameteres' is undefined
-- 1.0.17 Added browser support
 
 # Maintainers & Contributors
 

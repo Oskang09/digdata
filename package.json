@@ -1,7 +1,7 @@
 {
   "name": "digdata",
-  "version": "1.0.17",
-  "description": "Some utility for digging data from a complex object or array.",
+  "version": "1.1.0",
+  "description": "lightweight zero dependency object data utility",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
