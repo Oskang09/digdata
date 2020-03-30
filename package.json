@@ -2,11 +2,12 @@
   "name": "digdata",
   "version": "1.0.16",
   "description": "Some utility for digging data from a complex object or array.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "build": "babel -d lib src"
   },
   "homepage": "https://github.com/Oskang09/digdata#readme",
   "repository": {
@@ -16,6 +17,9 @@
   "author": "Oskang09",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
     "jest": "^25.1.0",
     "nodemon": "^2.0.2"
   }
