@@ -4,9 +4,22 @@ Some utility for digging data from a complex object or array.
 
 # Installation
 
-Using npm:
+### Using NPM
+
 ```
 $ npm i --save digdata
+```
+
+### Using yarn
+
+```
+$ yarn add digdata
+```
+
+### Browser
+
+```js
+<script src="https://oskang09.github.io/digdata/index.min.js"><script>
 ```
 
 # Example & Ussage
@@ -221,6 +234,7 @@ Ran all test suites.
 - 1.0.14 Fix security alerts
 - 1.0.15 Feature Pipe Symbol
 - 1.0.16 Error when 'second parameteres' is undefined
+- 1.0.17 Added browser support
 
 # Maintainers & Contributors
 
