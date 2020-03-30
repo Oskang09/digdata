@@ -15,7 +15,11 @@ $ yarn add digdata
 ### Browser
 
 ```js
+// latest version from master branch
 <script src="https://oskang09.github.io/digdata/index.min.js"><script>
+
+// specific version from tags 1.1.0
+<script src="https://github.com/Oskang09/digdata/releases/download/1.1.0/index.min.js"></script>
 ```
 
 # Example & Ussage
