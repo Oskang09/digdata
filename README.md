@@ -1,7 +1,3 @@
-# digdata
-
-lightweight zero dependency object data utility
-
 # Installation
 
 ### Using NPM
