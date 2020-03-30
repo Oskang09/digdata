@@ -75,9 +75,15 @@ const dig = function (object, structure, options = opts) {
     return target;
 };
 
-module.exports = {
+const output = {
     dig,
     setOptions: function (newOpts) {
         Object.assign(opts, newOpts);
     },
 };
+
+try {
+    module.exports = output;
+} catch (error) {
+    Object.assign(window, output);
+}
