@@ -345,7 +345,6 @@ Example cache json look like.
 
 # Test & Coverages
 
-![](https://github.com/Oskang09/digdata/workflows/NodeCI/badge.svg)
 ```
  PASS  ./index.test.js
   √ Should dot string notation accepted. (3ms)
