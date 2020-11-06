@@ -3,13 +3,13 @@
 ### Using NPM
 
 ```
-$ npm i --save digdata
+$ npm i --save @oskang09/digdata
 ```
 
 ### Using yarn
 
 ```
-$ yarn add digdata
+$ yarn add @oskang09/digdata
 ```
 
 ### Browser
