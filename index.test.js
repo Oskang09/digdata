@@ -1,4 +1,8 @@
-const { dig, setOptions, setFormatter } = require('./index');
+const {
+    dig, cursor,
+    setOptions, setFormatter,
+    _withOptions, _disableTrackKey
+} = require('./index');
 
 const object = {
     owner: {
@@ -115,6 +119,62 @@ test('Should skip if function not found.', () => {
     expect(log.mock.calls.length).toBe(2);
     expect(log.mock.calls[0][0]).toBe(null);
     expect(log.mock.calls[1][0]).toBe(true);
+});
+
+test('Should `cursor` build options object', () => {
+    const opts = cursor();
+    expect(opts.cursor).not.toBe(null);
+})
+
+test(`Should build cache when cursor not null`, () => {
+    const opts = cursor();
+    const object = {
+        name: 'Yuzy',
+        job: "Student",
+        friends: [
+            {
+                name: "Oska"
+            },
+            {
+                name: "WangLin"
+            }
+        ]
+    };
+    const result = dig(object, 'name', opts);
+    dig(object, "friends.*.name", opts);
+    expect(result).toBe('Yuzy');
+    expect(opts.cursor).toStrictEqual({
+        name: 'Yuzy',
+        friends: object.friends,
+        "friends.*": object.friends,
+        "friends.*.name": ["Oska", "WangLin"]
+    });
+});
+
+test(`Should get from cache when cursor not null and key exist`, () => {
+    const opts = cursor();
+    const object = {
+        name: 'Yuzy',
+        job: "Student",
+        client: {
+            name: "Oska"
+        },
+    };
+    const result = dig(object, 'client.name', opts);
+    dig(object, 'client.name', opts)
+    expect(result).toBe('Oska');
+    expect(opts.cursor).toStrictEqual({
+        client: object.client,
+        'client.name': 'Oska'
+    });
+});
+
+test('Should `withOptions` set disableTracker on options', () => {
+    const options = cursor();
+    const newOptions = _withOptions(options, true);
+    const newOptions2 = _withOptions(options, false);
+    expect(newOptions[_disableTrackKey]).toBe(true);
+    expect(newOptions2[_disableTrackKey]).toBe(undefined);
 });
 
 test('Should `setOptions` update options object.', () => {
