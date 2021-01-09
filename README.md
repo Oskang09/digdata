@@ -1,15 +1,13 @@
 # Installation
 
-### Using NPM
+### Node
 
-```
-$ npm i --save @oskang09/digdata
-```
-
-### Using yarn
-
-```
-$ yarn add @oskang09/digdata
+```js
+{
+    "dependencies": {
+        "digdata": "Oskang09/digdata#1.1.2",
+    },
+}
 ```
 
 ### Browser
@@ -19,7 +17,7 @@ $ yarn add @oskang09/digdata
 <script src="https://oskang09.github.io/digdata/index.min.js"><script>
 
 // specific version 1.1.0 ( browser support start from 1.1.0 )
-<script src="https://oskang09.github.io/digdata/versions/1.1.1/index.min.js"><script>
+<script src="https://oskang09.github.io/digdata/versions/1.1.2/index.min.js"><script>
 ```
 
 # Example & Ussage
