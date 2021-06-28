@@ -1,3 +1,7 @@
+# Suggestion
+
+If your codebase is support [Optional Chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining), i will suggest you to use that unless you have some excuse to use like, large access to single object and want to use "cursor" to make it faster. Since native supported should have better performance than this library.
+
 # Installation
 
 ### Node
